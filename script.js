@@ -19,29 +19,52 @@ function playRound(playerSelection, computerSelection){
     playerSelection = playerSelection.toUpperCase();
     if(playerSelection === "ROCK"){
         if(computerSelection === "Paper"){
-            return "You Lose! Paper beats Rock";
+            console.log("You Lose! Paper beats Rock");
+            return -1;
         } else if(computerSelection === "Scissor"){
-            return "You Win! Rock beats Scissor";
+            console.log("You Win! Rock beats Scissor");
+            return 1
         } else {
-            return "Draw ! Rock vs Rock has no winner"
+            console.log("Draw ! Rock vs Rock has no winner");
+            return 0
         }
     } else if(playerSelection === "PAPER"){
         if(computerSelection === "Scissor"){
-            return "You Lose! Scissor beats Paper";
+            console.log("You Lose! Scissor beats Paper");
+            return -1;
         } else if(computerSelection === "Rock"){
-            return "You Win! Paper beats Rock";
+            console.log("You Win! Paper beats Rock");
+            return 1;
         } else {
-            return "Draw ! Paper vs Paper has no winner"
+            console.log("Draw ! Paper vs Paper has no winner");
+            return 0;
         }
     } else if(playerSelection === "SCISSOR"){
         if(computerSelection === "Rock"){
-            return "You Lose! Rock beats Scissor";
+            console.log("You Lose! Rock beats Scissor");
+            return -1;
         } else if(computerSelection === "Paper"){
-            return "You Win! Scissor beats Paper";
+            console.log("You Win! Scissor beats Paper");
+            return 1;
         } else {
-            return "Draw ! Scissor vs Rock has no winner"
+            console.log("Draw ! Scissor vs Rock has no winner");
+            return 0;
         }
     }
 }
 
-console.log(playRound(prompt("Choose Rock, Paper or Scissor"),computerPlay()));
+function game(){
+    let result = 0;
+    for(let i = 0; i < 5; i++){
+        result += playRound(prompt("Choose Rock, Paper or Scissor"),computerPlay());
+    }
+    if(result > 0){
+        console.log("You Won!");
+    }else if(result < 0){
+        console.log("You Lost!");
+    } else{
+        console.log("Draw, nobody wins!")
+    }
+}
+
+game();
